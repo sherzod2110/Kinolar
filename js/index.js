@@ -13,5 +13,5 @@ kinolar.forEach(function (kino) {
   newCast.textContent = kino.cast.join(", ");
   
   newLiItem.append(newTitle, newYear, newCast, newGenres);
-  elList.append(newLiItem);
+  elList.appendChild(newLiItem);
 })

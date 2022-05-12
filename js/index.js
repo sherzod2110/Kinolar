@@ -1,3 +1,4 @@
+// Called elements
 let elList = $(".js-list");
 
 

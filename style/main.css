@@ -8,7 +8,7 @@
   text-align: center;
   overflow: scroll;
   overflow-x: hidden;
-
+  border-radius: 5px;
 }
 
 .item-name {

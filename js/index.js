@@ -1,9 +1,10 @@
 // Called elements
 let elList = $(".js-list");
 
+kinolar.splice(100);
 
 kinolar.forEach(function (kino) {
-  kinolar.splice(100);
+  
   let newLiItem = createElement("li", "list-item", "");
   let newTitle = createElement("p", "item-name", kino.title.toUpperCase());
   let newYear = createElement("p", "item-year", kino.year);

@@ -1,19 +1,19 @@
 .list-item {
   width: 270px;
-  height: 300px;
+  height: 330px;
   border: 4px solid rgb(66, 165, 63);
   list-style-type: none;
   margin-bottom: 10px;
   padding: 10px;
   text-align: center;
-  overflow: scroll;
-  overflow-x: hidden;
   border-radius: 5px;
 }
 
 .item-name {
   font-weight: bold; 
   color: black;
+  font-size: 20px;
+  height: 50px;
 }
 
 .item-year {
@@ -29,6 +29,8 @@
 .item-genres {
   font-weight: bold;
   color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 ::-webkit-scrollbar {
@@ -71,4 +73,16 @@ footer {
   font-size: 40px;
   font-weight: bold;
   color: #fff;
+}
+
+.box-1 {
+  max-width: 200px;
+  height: 200px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  border-radius: 5px;
 }

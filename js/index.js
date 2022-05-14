@@ -17,6 +17,5 @@ kinolar.forEach(function (kino) {
   
   newBox.append(newYear, newCast);
   newLiItem.append(newTitle, newBox, newGenres);
-  // newLiItem.append(newTitle, newYear, newCast, newGenres);
   elList.appendChild(newLiItem);
 })

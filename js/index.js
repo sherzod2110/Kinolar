@@ -1,21 +1,62 @@
 // Called elements
 let elList = $(".js-list");
+let elForm = $(".form");
+let elInput = $(".form_input");
+let elMovieTemplate = $("#movies-template").content;
 
 kinolar.splice(100);
 
-kinolar.forEach(function (kino) {
-  
-  let newLiItem = createElement("li", "list-item", "");
-  let newTitle = createElement("h3", "item-name", kino.title.toUpperCase());
-  let newBox = createElement("div", "box-1",);
-  let newYear = createElement("p", "item-year", kino.year);
-  let newCast = createElement("p", "item-cast", kino.cast);
-  let newGenres = createElement("p", "item-genres", kino.genres.toString());
 
-  newGenres.textContent = kino.genres.join(", ");
-  newCast.textContent = kino.cast.join(", ");
+let normalizedMovies = kinolar.map((kino) => {
+  return {
+    title: kino.title,
+    cast: kino.cast.join(", "),
+    genres: kino.genres.join(", "),
+    year: kino.year,
+  }
   
-  newBox.append(newYear, newCast);
-  newLiItem.append(newTitle, newBox, newGenres);
-  elList.appendChild(newLiItem);
+
+})
+
+let createMoveiElement = (movie) => {
+  elList.innerHTML = "";
+  let movieElement = elMovieTemplate.cloneNode(true);
+
+  $(".card-title", movieElement).textContent = movie.title;
+  $(".card-cast", movieElement).textContent = movie.year;
+  $(".card-genres", movieElement).textContent = movie.cast;
+  $(".card-year", movieElement).textContent = movie.genres;
+
+  let newDiv = createElement("div")
+
+  return movieElement;
+
+}
+
+let renderMovies = (movies) => {
+
+  let elResultFragment = document.createDocumentFragment();
+  movies.forEach((movie) => {
+    elResultFragment.append(createMoveiElement(movie));
+    
+  })
+  
+  elList.append(elResultFragment);
+
+}
+
+renderMovies(normalizedMovies);
+
+elForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  let searchMovie = new RegExp(elInput.value.trim(), "gi");
+
+  let searchResult = normalizedMovies.filter((movie) => {
+    if (movie.title.match(searchMovie)) {
+      return movie.title.match(searchMovie);
+    }
+  })
+
+  renderMovies(searchResult);
 })

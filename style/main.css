@@ -9,24 +9,28 @@
   border-radius: 5px;
 }
 
-.item-name {
+.card-title {
   font-weight: bold; 
   color: black;
   font-size: 20px;
   height: 50px;
 }
 
-.item-year {
+.card-cast {
   font-weight: bold;
   color: blue;
 }
 
-.item-cast {
+.card-body {
+  padding-top: 0;
+}
+
+.card-genres {
   font-weight: bold;
   color: rgb(127, 127, 127);
 }
 
-.item-genres {
+.card-year {
   font-weight: bold;
   color: red;
   margin-top: 10px;
@@ -52,20 +56,30 @@
 
 .box {
   max-width: 500px;
-  height: 100px;
+  height: 120px;
   background-color: green;
   border-radius: 25px;
-  display: flex;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  position: relative;
+}
+
+.img {
+  position: absolute;
+  top: 64px;
+  left: 133px;
 }
 
 footer {
   height: 70px;
   background-color: rgb(88, 88, 189);
+}
+
+.form_input {
+  padding-left: 33px;
 }
 
 .text-2 {

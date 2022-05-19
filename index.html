@@ -14,7 +14,7 @@
   <header>
     <div class="container">
       <div class="box">
-        <h1 class="h1 d-block ms-auto me-auto fw-bold text-center text-white">MOVIES</h1>
+        <h1 class="d-block ms-auto me-auto fw-bold text-center text-white">MOVIES</h1>
         <form class="form">
           <img class="img" src="./img/54481.png" alt="" width="20" height="20">
           <input class="form_input form-control w-50 ms-auto me-auto fw-bold" type="search" placeholder="Search">
@@ -44,7 +44,8 @@
 
 
   <template id="movies-template">
-    <li class="list-item card mb-4 text-center" style="width: 18rem; height: 270px; overflow: auto;">
+    <li class="list-item card mb-4 text-center" style="height: 270px; overflow: auto;">
+      <img class="card-img-top img_img" src="" alt="" height="225">
       <div class="card-body">
         <h5 class="card-title">Small Town Saturday Night</h5>
 
@@ -54,13 +55,15 @@
         <p class="card-genres card-text">"Drama"</p>
 
         <p class="card-year card-text">2010</p>
+
+        <a class="card-trailler fw-bold" href="#" target="_blank">Watch film trailer</a>
       </div>
     </li>
   </template>
 
   <script src="./bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="./js/utils.js"></script>
-  <script src="./js/kinolar.js"></script>
+  <script src="./js/movies.js"></script>
   <script src="./js/index.js"></script>
 </body>
 </html>

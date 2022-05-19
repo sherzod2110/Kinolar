@@ -4,30 +4,37 @@ let elForm = $(".form");
 let elInput = $(".form_input");
 let elMovieTemplate = $("#movies-template").content;
 
-kinolar.splice(100);
+movies.splice(100);
 
 
-let normalizedMovies = kinolar.map((kino) => {
+let normalizedMovies = movies.map((movie) => {
   return {
-    title: kino.title,
-    cast: kino.cast.join(", "),
-    genres: kino.genres.join(", "),
-    year: kino.year,
+    title: movie.Title.toString(),
+    fulltitle: movie.fulltitle,
+    categories: movie.Categories.split("|").join(", "),
+    summary: movie.summary,
+    imdbRating: movie.imdb_rating,
+    runtime: movie.runtime,
+    language: movie.language,
+    trailer: `https://www.youtube.com/watch?v=${movie.ytid}`,
+    smallPoster: `http://i3.ytimg.com/vi/${movie.ytid}/hqdefault.jpg`
   }
-  
 
 })
+
 
 let createMoveiElement = (movie) => {
   elList.innerHTML = "";
   let movieElement = elMovieTemplate.cloneNode(true);
 
   $(".card-title", movieElement).textContent = movie.title;
-  $(".card-cast", movieElement).textContent = movie.year;
-  $(".card-genres", movieElement).textContent = movie.cast;
-  $(".card-year", movieElement).textContent = movie.genres;
-
-  let newDiv = createElement("div")
+  $(".card-img-top", movieElement).src = movie.smallPoster;
+  $(".card-img-top", movieElement).alt = movie.title;
+  $(".card-cast", movieElement).textContent = movie.summary;
+  $(".card-genres", movieElement).textContent = movie.fulltitle;
+  $(".card-year", movieElement).textContent = movie.runtime;
+  $(".card-year", movieElement).textContent = movie.language;
+  $(".card-trailler", movieElement).href = movie.trailer;
 
   return movieElement;
 
@@ -42,7 +49,6 @@ let renderMovies = (movies) => {
   })
   
   elList.append(elResultFragment);
-
 }
 
 renderMovies(normalizedMovies);

@@ -13,7 +13,7 @@
   font-weight: bold; 
   color: black;
   font-size: 20px;
-  height: 30px;
+  height: 49px;
   margin: 0;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .box {
-  max-width: 500px;
+  max-width: 1187px;
   height: 120px;
   background-color: green;
   border-radius: 25px;
@@ -70,8 +70,8 @@
 
 .img {
   position: absolute;
-  top: 64px;
-  left: 133px;
+  top: 9px;
+  left: 24px;
 }
 
 footer {
@@ -99,4 +99,23 @@ footer {
   margin-right: auto;
   padding: 10px;
   border-radius: 5px;
+}
+
+.img1 {
+  position: absolute;
+  top: 6px;
+  left: 1139px;
+  width: 26px;
+  height: 26px;
+  filter: invert(49%) sepia(12%) saturate(340%) hue-rotate(167deg) brightness(90%) contrast(88%);
+
+}
+
+.img2 {
+  position: absolute;
+  top: 6px;
+  left: 846px;
+  width: 26px;
+  height: 26px;
+  filter: invert(49%) sepia(12%) saturate(340%) hue-rotate(167deg) brightness(90%) contrast(88%);
 }

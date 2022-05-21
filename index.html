@@ -15,9 +15,28 @@
     <div class="container">
       <div class="box">
         <h1 class="d-block ms-auto me-auto fw-bold text-center text-white">MOVIES</h1>
-        <form class="form">
+        <form class="form d-flex px-3 gap-2 position-relative">
+
           <img class="img" src="./img/54481.png" alt="" width="20" height="20">
-          <input class="form_input form-control w-50 ms-auto me-auto fw-bold" type="search" placeholder="Search">
+          <img class="img1" src="./img/5166100.png" alt="" width="20" height="20">
+          <img class="img2" src="./img/5166100.png" alt="" width="20" height="20">
+
+          <input class="form_input form-control ms-auto me-auto fw-bold" style="width: 320px;" type="search" placeholder="Search">
+          <input class="form_input-reiting form-control ms-auto me-auto fw-bold" style="width: 320px;" type="number" placeholder="Rating search">
+          
+          <select class="js-Categories-select form-control fw-bold text-secondary pe-5" style="width: 320px;" name="genre" aria-label="Genre">
+   
+          </select>
+
+          <select class="js-sort-select form-control fw-bold text-secondary" style="width: 320px;" name="sort" aria-label="Sorting">
+            <!-- <option value="rating_desc" selected>Rating (high to low)</option>
+            <option value="rating_asc">Rating (low to high)</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="year_desc">Year (new to old)</option>
+            <option value="year_asc">Year (old to new)</option> -->
+          </select>
+
         </form>
       </div>
     </div>
@@ -47,16 +66,23 @@
     <li class="list-item card mb-4 text-center" style="height: 270px; overflow: auto;">
       <img class="card-img-top img_img" src="" alt="" height="225">
       <div class="card-body">
-        <h5 class="card-title">Small Town Saturday Night</h5>
+        <h5 class="card-title">Patton Oswalt: Annihilation</h5>
 
-        <p class="card-cast card-text">"Chris Pine","Shawn Christian","John Hawkes","Bre Blair","Muse Watson","Robert
-          Pine","Brent Briscoe","Lin Shaye"</p>
+        <p class="card-fulltitle fw-bold text-warning">Patton Oswalt: Annihilation (2017)</p>
 
-        <p class="card-genres card-text">"Drama"</p>
+        <p class="card-movieyear fw-bold">2010</p>
 
-        <p class="card-year card-text">2010</p>
+          <p class="card-Categories fw-bold text-info">Uncategorized</p>
 
-        <a class="card-trailler fw-bold" href="#" target="_blank">Watch film trailer</a>
+        <p class="card-summary fw-bold text-secondary">"Drama"</p>
+
+
+        <p class="card-imdbRating text-danger fw-bold">44</p>
+
+        <p class="card-language fw-bold">English</p>
+        
+        <a class="card-trailler btn btn-primary fw-bold" href="#" target="_blank">Watch film trailer</a>
+        
       </div>
     </li>
   </template>

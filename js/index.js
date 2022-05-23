@@ -6,7 +6,7 @@ let elInputRaiting = $(".form_input-reiting");
 let elCategories = $(".js-Categories-select");
 let elSort = $(".js-sort-select");
 let elMovieTemplate = $("#movies-template").content;
-movies.splice(100);
+movies.splice(200);
 
 
 let normalizedMovies = movies.map((movie) => {

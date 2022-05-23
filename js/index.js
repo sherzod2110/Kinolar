@@ -36,7 +36,7 @@ let createMoveiElement = (movie) => {
   $(".card-summary", movieElement).textContent = movie.summary;
   $(".card-img-top", movieElement).src = movie.smallPoster;
   $(".card-img-top", movieElement).alt = movie.title;
-  $(".card-imdbRating", movieElement).textContent = movie.imdb_rating;
+  $(".card-imdbRating", movieElement).textContent = movie.imdbRating;
   $(".card-language", movieElement).textContent = movie.language;
   $(".card-trailler", movieElement).href = movie.trailer;
 
@@ -44,7 +44,7 @@ let createMoveiElement = (movie) => {
 }
 
 let renderMovies = (movies) => {
-
+  elList.innerHTML = "";
   let elResultFragment = document.createDocumentFragment();
   movies.forEach((movie) => {
     elResultFragment.append(createMoveiElement(movie));
@@ -56,7 +56,7 @@ let renderMovies = (movies) => {
 
 renderMovies(normalizedMovies);
 
-elInput.addEventListener("change", (evt) => {
+elInput.addEventListener("input", (evt) => {
   evt.preventDefault();
 
   let searchMovie = new RegExp(elInput.value.trim(), "gi");
@@ -71,14 +71,30 @@ elInput.addEventListener("change", (evt) => {
 })
 
 
-
+let numberCategoriy = [];
 normalizedMovies.forEach((movi) => {
-  let newOption = createElement("option", "", "");
-  newOption.textContent = movi.categories;
-  newOption.option = movi.categories;
-  elCategories.append(newOption);
-
+  
+  movi.categories.split(", ").forEach((categoriy) => {
+    if(!numberCategoriy.includes(categoriy)){
+      numberCategoriy.push(categoriy);
+    }
+  })
 })
+
+
+numberCategoriy.forEach((a) => {
+  let newOption = document.createElement("option");
+  newOption.textContent = a;
+  newOption.value = a;
+
+  elCategories.append(newOption);
+})
+
+let newOption = document.createElement("option");
+newOption.textContent = "All";
+newOption.value = "All";
+
+elCategories.prepend(newOption);
 
 
 elCategories.addEventListener("change", (evt) => {
@@ -89,52 +105,67 @@ elCategories.addEventListener("change", (evt) => {
        return movie.categories.includes(elCategories.value)
      }
   })
+  if(elCategories.value == "All"){
+    renderMovies(normalizedMovies);
+  }else{
   renderMovies(categoryMovies)
+}
 })
 
 
 
-//Reyting boyicha qidirish funksiyasi
-// elInputRaiting.addEventListener("change", (evt) => {
-//   evt.preventDefault();
+elInputRaiting.addEventListener("change", (evt) => {
+  evt.preventDefault();
 
-//   let reytingSearch = function(){
-//     let a = [];
-//     normalizedMovies.forEach((movie) => {
-//       if(movie.movie_year >= elSearchReytingInput.value.trim()){
-//         a.push(movie);
-//       }
-//     })
-//     return a;
-//   }
-//   renderKinolar(reytingSearch());
-// })
-
+  let reytingSearch = function(){
+    let a = [];
+    normalizedMovies.forEach((movie) => {
+      if(movie.imdbRating >= elInputRaiting.value.trim()){
+        a.push(movie);
+      }
+    })
+    return a;
+  }
+  renderMovies(reytingSearch());
+})
 
 
 
-// Alifbo buyicha qidirish
-let sortAlifboReytingCreatOption = function(){
 
-  let elSortTitleOption = document.createElement("option");
-  elSortTitleOption.textContent = "A-Z";
-  elSortTitleOption.value = "A-Z";
+// SORTLASH
+let newOptionArry = ["A-Z","Z-A","Reating=>","Reating<="];
+
+
+newOptionArry.forEach((grow)=>{
   
-  let elSortReversTitleOption = document.createElement("option");
-  elSortReversTitleOption.textContent = "Z-A";
-  elSortReversTitleOption.value = "Z-A";
+  let newOption = createElement("option","",grow);
+  newOption.textContent = grow;
+  newOption.value = grow;
   
-  let elSortReytingOption = document.createElement("option");
-  elSortReytingOption.textContent = "Reytingi =>";
-  elSortReytingOption.value = "Reytingi =>";
-  
-  let elSortReverseReytingOption = document.createElement("option");
-  elSortReverseReytingOption.textContent = "Reytingi <=";
-  elSortReverseReytingOption.value = "Reytingi <=";
-  
-  elSort.append(elSortTitleOption, elSortReversTitleOption, elSortReytingOption, elSortReverseReytingOption);
+  elSort.append(newOption);
+}) 
+
+let sortMovies = []
+if (elSort.value == newOptionArry[0]){
+  sortMovies = normalizedMovies.sort((a,b)=> a.title.localeCompare(b.title))
 }
-  
-  sortAlifboReytingCreatOption()
-  
-  
+
+elSort.addEventListener("change", (evt)=>{
+  evt.preventDefault();
+  elList.innerHTML = "";
+  let sortMovies = [];
+    if (elSort.value == newOptionArry[0]){
+      sortMovies = normalizedMovies.sort((a,b)=> a.title.localeCompare(b.title))
+    }
+    if (elSort.value == newOptionArry[1]){
+      sortMovies = normalizedMovies.sort((a,b)=> b.title.localeCompare(a.title))
+    }
+    if (elSort.value == newOptionArry[2]){
+      sortMovies = normalizedMovies.sort((a,b)=> b.imdbRating - a.imdbRating)
+    }
+    if (elSort.value == newOptionArry[3]){
+      sortMovies = normalizedMovies.sort((a,b)=> a.imdbRating - b.imdbRating)
+    }
+   
+  renderMovies(sortMovies)
+});

@@ -136,11 +136,11 @@ elInputRaiting.addEventListener("change", (evt) => {
 let newOptionArry = ["A-Z","Z-A","Reating=>","Reating<="];
 
 
-newOptionArry.forEach((grow)=>{
+newOptionArry.forEach((sort)=>{
   
-  let newOption = createElement("option","",grow);
-  newOption.textContent = grow;
-  newOption.value = grow;
+  let newOption = createElement("option","",sort);
+  newOption.textContent = sort;
+  newOption.value = sort;
   
   elSort.append(newOption);
 }) 
